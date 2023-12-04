@@ -1,5 +1,5 @@
 pipeline {
-   agent { docker { image 'mcr.microsoft.com/playwright/python:v1.39.0-jammy' } }
+   agent { sudo docker { image 'mcr.microsoft.com/playwright/python:v1.39.0-jammy' } }
    stages {
       stage('Tests') {
          steps {
