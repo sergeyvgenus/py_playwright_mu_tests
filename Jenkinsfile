@@ -5,9 +5,9 @@ pipeline {
          steps {
             sh 'python3 --version'
             sh 'pip3 --version'
-            // sh 'pip install -r requirements.txt'
-            // sh 'python -m pip install --upgrade pip'
-            // sh 'pytest'
+            sh 'pip3 install -r requirements.txt'
+            sh 'python3 -m pip install --upgrade pip'
+            sh 'pytest'
          }
       }
       stage('Report') {
