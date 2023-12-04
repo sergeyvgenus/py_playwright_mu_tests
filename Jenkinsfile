@@ -5,8 +5,8 @@ pipeline {
          steps {
             sh 'python3 --version'
             sh 'pip3 --version'
-            sh 'pip3 install -r requirements.txt'
-            sh 'python3 -m pip install --upgrade pip'
+            sh 'sudo pip3 install -r requirements.txt'
+            sh 'sudo python3 -m pip install --upgrade pip'
             sh 'pytest'
          }
       }
