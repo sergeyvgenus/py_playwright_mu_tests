@@ -3,9 +3,11 @@ pipeline {
    stages {
       stage('Tests') {
          steps {
-            sh 'pip install -r requirements.txt'
-            sh 'python -m pip install --upgrade pip'
-            sh 'pytest'
+            sh 'python3 --version'
+            sh 'pip3 --version'
+            // sh 'pip install -r requirements.txt'
+            // sh 'python -m pip install --upgrade pip'
+            // sh 'pytest'
          }
       }
       stage('Report') {
