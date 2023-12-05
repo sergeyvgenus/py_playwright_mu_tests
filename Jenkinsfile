@@ -4,7 +4,7 @@ pipeline {
         stage('Build the container and run tests') {
             agent {
                 dockerfile {
-                    args '--ipc=host -v /var/lib/jenkins/workspace/DockerPipeline/tests/allure-reports:/tests/allure-reports'
+                    args '--ipc=host -v /var/lib/jenkins/workspace/DockerPipeline@2/tests/allure-reports:/tests/allure-reports'
                 }
             }
             
