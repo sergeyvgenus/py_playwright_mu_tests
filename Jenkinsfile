@@ -18,7 +18,7 @@ pipeline {
     }
     post {
         always {
-            allure includeProperties: false, jdk: '', results: [[path: '/var/lib/jenkins/workspace/DockerPipeline/tests/allure-reports']]
+            allure includeProperties: false, jdk: '', results: [[path: '/var/lib/jenkins/workspace/DockerPipeline@2/tests/allure-reports']]
         }
     }
 }
