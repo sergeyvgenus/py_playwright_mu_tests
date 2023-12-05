@@ -1,5 +1,5 @@
 pipeline {
-    agent amy
+    agent none
     stages {
         stage('Build the container and run tests') {
             agent {
@@ -16,11 +16,14 @@ pipeline {
             }
         }
     }
-    post {
-        always {
-            allure includeProperties: false, jdk: '', results: [[path: '/var/lib/jenkins/workspace/DockerPipeline/tests/allure-reports']]
+    node {
+        post {
+            always {
+                allure includeProperties: false, jdk: '', results: [[path: '/var/lib/jenkins/workspace/DockerPipeline/tests/allure-reports']]
+            }
         }
     }
+    
 }
 
 // pipeline {
