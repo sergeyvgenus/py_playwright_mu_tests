@@ -16,6 +16,7 @@ pipeline {
         }
     }
     post {
+        agent any
         always {
             allure includeProperties: false, jdk: '', results: [[path: 'tests/allure-reports']]
         }
