@@ -1,12 +1,10 @@
 pipeline {
-   agent { docker { image 'mcr.microsoft.com/playwright/python:v1.39.0-jammy' } }
+   agent { docker { dockerfile true } }
    stages {
       stage('Tests') {
          steps {
             sh 'python3 --version'
             sh 'pip3 --version'
-            sh 'sudo pip3 install -r requirements.txt'
-            sh 'sudo python3 -m pip install --upgrade pip'
             sh 'pytest'
          }
       }
