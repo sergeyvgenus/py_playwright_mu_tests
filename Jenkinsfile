@@ -1,5 +1,5 @@
 pipeline {
-   agent none
+   agent any
    stages {
         stage('Build the container and run tests') {
             agent {
@@ -16,7 +16,6 @@ pipeline {
         }
     }
     post {
-        agent any
         always {
             allure includeProperties: false, jdk: '', results: [[path: 'tests/allure-reports']]
         }
