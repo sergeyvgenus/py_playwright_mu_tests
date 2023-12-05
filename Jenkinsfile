@@ -1,5 +1,9 @@
 pipeline {
-   agent { dockerfile true }
+   agent { 
+    dockerfile {
+        args '--ipc=host -v /var/lib/jenkins/workspace/DockerPipeline/tests/allure-reports:/tests/allure-reports'
+    }
+    }
    stages {
       stage('Tests') {
          steps {
