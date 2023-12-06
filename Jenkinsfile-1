@@ -4,7 +4,7 @@ pipeline {
         stage('Build the container and run tests') {
             agent {
                 dockerfile {
-                    args '--ipc=host -v /var/lib/jenkins/workspace/DockerPipeline/tests/allure-reports:/tests/allure-reports'
+                    args '--ipc=host -v /var/lib/jenkins/workspace/DockerPipeline/tests/allure-results:/tests/allure-results'
                 }
             }
             
@@ -18,7 +18,7 @@ pipeline {
         stage('Generate a report') {
             agent any 
             steps {
-                allure includeProperties: false, jdk: '', report: 'tests/allure-results', results: [[path: 'tests/allure-report']]
+                allure includeProperties: false, jdk: '', report: 'tests/allure-report', results: [[path: 'tests/allure-results']]
             }
         }
     }
