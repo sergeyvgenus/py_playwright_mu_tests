@@ -18,7 +18,7 @@ pipeline {
         stage('Generate a report') {
             agent any 
             steps {
-                allure includeProperties: false, jdk: '', report: 'tests/allure-report', results: [[path: 'tests/allure-results']]
+                allure includeProperties: false, jdk: '', report: 'tests/allure-reports', results: [[path: 'tests/allure-results']]
             }
         }
     }
