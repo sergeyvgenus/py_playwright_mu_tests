@@ -12,6 +12,7 @@ pipeline {
             }
             
             steps {
+                checkout
                 echo 'Container is build and running'
                 sh 'python3 --version'
                 sh 'pip3 --version'
