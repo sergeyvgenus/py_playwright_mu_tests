@@ -1,11 +1,17 @@
 pipeline {
     agent any
+    options {
+        skipDefaultCheckout(true)
+    }
     stages {
         stage('Build the container and run tests') {
             agent {
                 dockerfile {
                     args '--ipc=host -v /var/lib/jenkins/workspace/DockerPipeline@2/tests/allure-results:/tests/allure-results'
                 }
+            }
+            options {
+                skipDefaultCheckout(false)
             }
             
             steps {
