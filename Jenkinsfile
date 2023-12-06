@@ -14,11 +14,11 @@ pipeline {
                 sh 'pytest'
             }
         }
-        
-        post {
-            always {
-                allure includeProperties: false, jdk: '', report: 'tests/allure-reports', results: [[path: 'tests/allure-results']]
-            }
+    }    
+    
+    post {
+        always {
+            allure includeProperties: false, jdk: '', report: 'tests/allure-reports', results: [[path: 'tests/allure-results']],
         }        
     }
 }
