@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+    options {
+        skipDefaultCheckout()
+    }
+    stages {
+        stage('Build the container and run tests') {
+            agent {
+                dockerfile {
+                    args '--ipc=host -v /var/lib/jenkins/workspace/DockerPipeline@2/tests/allure-results:/tests/allure-results'
+                }
+            }
+            
+            steps {
+                echo 'Container is build and running'
+                sh 'python3 --version'
+                sh 'pip3 --version'
+                sh 'pytest'
+            }
+        }
+
+    post {
+        always {
+            allure includeProperties: false, jdk: '', report: 'tests/allure-reports', results: [[path: 'tests/allure-results']]
+        }
+    }
+    }
+}

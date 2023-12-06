@@ -16,7 +16,10 @@ pipeline {
             }
         }
         stage('Generate a report') {
-            agent any 
+            agent any
+            options {
+                skipDefaultCheckout()
+            } 
             steps {
                 allure includeProperties: false, jdk: '', report: 'tests/allure-reports', results: [[path: 'tests/allure-results']]
             }
