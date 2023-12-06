@@ -15,11 +15,11 @@ pipeline {
                 sh 'pytest'
             }
         }
-    }
         stage('Generate a report') {
             agent any 
             steps {
                 allure includeProperties: false, jdk: '', report: 'tests/allure-results', results: [[path: 'tests/allure-report']]
             }
         }
+    }
 }
