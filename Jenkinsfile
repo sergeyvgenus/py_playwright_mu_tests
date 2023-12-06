@@ -18,7 +18,7 @@ pipeline {
     
     post {
         always {
-            allure includeProperties: false, jdk: '', report: 'tests/allure-reports', results: [[path: 'tests/allure-results']],
+            allure includeProperties: false, jdk: '', report: 'tests/allure-reports', results: [[path: 'tests/allure-results']]
         }        
     }
 }
