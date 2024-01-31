@@ -38,7 +38,7 @@ def test_upload_jmg(api_auth, api_request_context):
 
 @allure.feature("Uploading assets")
 @allure.title("Upload PDF")
-def test_upload_jmg2(api_auth, api_request_context):
+def test_upload_pdf(api_auth, api_request_context):
     page = BasePage(api_auth)
     page.open_the_page(UploadPage.page_url)
     upload_page = UploadPage(api_auth)
