@@ -1,0 +1,5 @@
+FROM mcr.microsoft.com/playwright/python:v1.39.0-jammy
+COPY . .
+RUN mkdir allure-docker-reports
+RUN pip install -r requirements.txt
+CMD ["pytest", "tests/_ui/test_test_ui.py", "--alluredir=allure-docker-reports"]

@@ -1,0 +1,35 @@
+name: Python application
+
+on:
+  push:
+
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: checkout repo
+      uses: actions/checkout@v3
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Ensure browsers are installed
+      run: python -m playwright install --with-deps
+    - name: Run tests with pytest
+      env:
+        BASEURL: http://qa-mu70tomcat.genus.qa/ams/muci
+        NAME: muadmin
+        PASSWORD: ${{ secrets.PASSWORD }}
+      run: |
+        pytest tests/_ui/test_for_github.py
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: puma_pro_screenshots
+        path: puma_pro.jpg
