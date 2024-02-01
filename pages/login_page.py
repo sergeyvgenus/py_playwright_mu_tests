@@ -21,6 +21,7 @@ class LoginPage(BasePage):
         with allure.step('Enter Username, Password and click Login button'):
             self.page.get_by_label('Username').fill(username)
             self.page.get_by_label('Password').fill(password)
+            self.page.on('dialog', lambda dialog: dialog.accept())
             self.page.locator(LoginPageLocators.LOGIN_BUTTON).click()
 
     def enter_username(self, username):
@@ -41,11 +42,9 @@ class LoginPage(BasePage):
 
     def check_if_the_following_text_is_present_in_the_alert_dialog(self, alert_dialog_message_text):
         with allure.step('Verification of the alert dialog message text'):
-            self.page.on('dialog', lambda dialog: dialog.accept())
             with self.page.expect_event('dialog') as dialog_info:
-                self.page.get_by_role('dialog')
-            dialog_value = dialog_info.value
-            assert dialog_value.message == alert_dialog_message_text
+                print(dialog_info.value.message)
+                assert dialog_info.value.message == alert_dialog_message_text
 
     def check_if_the_page_title_is(self, title):
         with allure.step('Verification of the page title'):
