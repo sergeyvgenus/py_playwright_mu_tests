@@ -27,7 +27,6 @@ def api_auth(playwright: Playwright, browser: Browser):
         print('Check connection to server or VPN.', err)
 
 
-
 @pytest.fixture(scope="session")
 @allure.title("Context generation: authenticated state")
 def api_request_context(
@@ -36,13 +35,17 @@ def api_request_context(
     userpass = os.getenv('NAME') + ':' + os.getenv('PASSWORD')
     encodedusepass = base64.b64encode(userpass.encode()).decode()
     request_context = playwright.request.new_context(
-        base_url=os.getenv('BASEURL'),
+        base_url=os.getenv('APIBASEURL'),
         extra_http_headers={'Authorization': "Basic " + encodedusepass}
     )
     try:
-        request_context.get(os.getenv('BASEURL'))
+        request_context.get(os.getenv("MUCI_URL_PART"))
+        request_context.storage_state(path='playwright/.auth/state.json')
+        context = playwright.request.new_context(
+            base_url=os.getenv('APIBASEURL'),
+            storage_state='playwright/.auth/state.json')
+        yield context
+        context.dispose()
     except Exception as err:
-        print("Check connection to server or VPN.", err)
-    yield request_context
-    request_context.dispose()
-    
+        print('Check connection to server or VPN.', err)
+        

@@ -12,7 +12,7 @@ load_dotenv()
 @allure.story("Get Item Type")
 @allure.title("Get Item Type Test")
 def test_get_item_types(api_request_context: APIRequestContext):
-    response = api_request_context.get(f"{os.getenv('APIBASEURL')}/ams/rest/item-types")
+    response = api_request_context.get('/ams/rest/item-types')
     if response.status != 200:
         raise ValueError(f"Request test_get_item_types failed {response.status}")
     response_content = response.text()
@@ -28,7 +28,7 @@ def test_get_item_types(api_request_context: APIRequestContext):
 @allure.story("Get Item Type")
 @allure.title("Get Item Type Test 2")
 def test_get_item_types_2(api_request_context: APIRequestContext):
-    response = api_request_context.get(f"{os.getenv('APIBASEURL')}/ams/rest/item-types")
+    response = api_request_context.get('/ams/rest/item-types')
     if response.status != 200:
         raise ValueError(f"Request test_get_item_types failed {response.status}")
     response_content = response.text()
