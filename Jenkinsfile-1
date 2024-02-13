@@ -13,7 +13,7 @@ pipeline {
                 sh 'python3 --version'
                 sh 'pip3 --version'
                 sh 'mkdir playwright'
-                sh 'cd playwright'
+                sh 'cd /var/lib/jenkins/workspace/DockerPipeline/playwright'
                 sh 'mkdir .auth'
                 sh 'ls -la'
                 sh 'cd ..'
