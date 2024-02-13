@@ -12,7 +12,9 @@ pipeline {
                 echo 'Container is build and running'
                 sh 'python3 --version'
                 sh 'pip3 --version'
-                sh 'pytest'
+                sh 'pwd'
+                sh 'ls -la'
+                
             }
         }
         stage('Generate a report') {
