@@ -161,3 +161,4 @@ cython_debug/
 tests/allure-results
 tests/allure-reports
 playwright/.auth/state.json
+playwright
