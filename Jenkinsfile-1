@@ -12,12 +12,8 @@ pipeline {
                 echo 'Container is build and running'
                 sh 'python3 --version'
                 sh 'pip3 --version'
-                sh 'cd /var/lib/jenkins/workspace/DockerPipeline/playwright'
-                sh 'mkdir .auth'
-                sh 'ls -la'
-                sh 'cd ..'
-                sh 'ls -la'
-                
+                sh 'mkdir playwright/.auth'
+                sh 'pytest'
             }
         }
         stage('Generate a report') {
