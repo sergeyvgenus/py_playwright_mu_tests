@@ -12,7 +12,11 @@ pipeline {
                 echo 'Container is build and running'
                 sh 'python3 --version'
                 sh 'pip3 --version'
-                sh 'pwd'
+                sh 'mkdir playwright'
+                sh 'cd playwright'
+                sh 'mkdir .auth'
+                sh 'ls -la'
+                sh 'cd ..'
                 sh 'ls -la'
                 
             }
