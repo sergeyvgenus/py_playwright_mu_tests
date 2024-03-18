@@ -30,7 +30,6 @@ class AssetDetailsDialogLocators:
     ASSET_STATUS_SECTION = "//h2[text()='Asset status, security, and binaries'])"
     ORIGINAL_PART_DOWNLOAD_LINK = \
         "//table[contains(@class, 'itemsTable itemsTable')][1]/tr/td[contains(text(), 'Original')]/parent::tr//a"
-        # "//table[@class='itemsTable itemsTable-typeImage']/tr/td[contains(text(), 'Original')]/parent::tr//a"
     CLOSE_X_ICON = "(//span[contains(.,'x')])[8]"
     PREVIEW = "//@src[contains(.,'Preview1')]"
     MU_PLAYER_CONTROLBAR = "mu-player-controlbar"

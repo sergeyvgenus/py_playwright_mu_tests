@@ -1,5 +1,4 @@
 import allure
-import base64
 from dotenv import load_dotenv
 import os
 from playwright.sync_api import Page
